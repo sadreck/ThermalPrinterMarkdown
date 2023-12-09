@@ -1,0 +1,2 @@
+python-escpos[all]
+python-dotenv
