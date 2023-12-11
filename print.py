@@ -10,12 +10,10 @@ try:
     config = Config()
     config.validate()
 
-    # The first argument is the filename.
-    sys.argv.pop(0)
-    if len(sys.argv) == 0:
+    # contents = InputData().load(sys.argv[0], 'file')
+    contents = InputData().load()
+    if not contents or len(contents) == 0:
         raise Exception("ThermalPrinterMarkdown v{0}\n\nUsage: print.py file-to-print.md".format(__version__))
-
-    contents = InputData().load(sys.argv[0], 'file')
 
     markdown = MarkdownToEscPos(config.printer_line_width).convert(contents)
 
